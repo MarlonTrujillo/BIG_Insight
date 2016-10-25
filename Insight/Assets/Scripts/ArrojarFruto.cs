@@ -29,27 +29,32 @@ public class ArrojarFruto : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		Vector3 screenPos = camera.WorldToScreenPoint (GameObject.Find ("personaje").transform.position);
-		throwSpeed.x = Input.mousePosition.x - screenPos.x;
-		throwSpeed.y = (Input.mousePosition.y - screenPos.y)*2;
-        Debug.Log(throwSpeed); 
-        if (Input.GetMouseButtonDown(0) && !lanzado && frutosDisponibles > 0) // MouseIzq, no ha lanzado, y quedan frutos
-        {
-            Debug.Log("lanzado");
-            lanzado = true; // Ya se lanzó
-            frutosDisponibles--; // Resta a la cantidad de frutos
-         
-            // Crea una instancia del prefab ball desde la posición del personaje y anade rotación
-            ballClone = Instantiate(ball, GameObject.Find("personaje").transform.position, transform.rotation) as GameObject; 
-
-            rb = ballClone.GetComponent<Rigidbody>(); // Obtiene el RigidBody del prefab
-            rb.AddForce(throwSpeed/100, ForceMode.Impulse); // Añade el impulso
+        Arrojar();
             
 
 
 
 
 
+        }
+
+        void Arrojar()
+    {
+        Vector3 screenPos = camera.WorldToScreenPoint(GameObject.Find("personaje").transform.position);
+        throwSpeed.x = Input.mousePosition.x - screenPos.x;
+        throwSpeed.y = (Input.mousePosition.y - screenPos.y) * 2;
+        Debug.Log(throwSpeed);
+        if (Input.GetMouseButtonDown(0) && !lanzado && frutosDisponibles > 0) // MouseIzq, no ha lanzado, y quedan frutos
+        {
+            Debug.Log("lanzado");
+            lanzado = true; // Ya se lanzó
+            frutosDisponibles--; // Resta a la cantidad de frutos
+
+            // Crea una instancia del prefab ball desde la posición del personaje y anade rotación
+            ballClone = Instantiate(ball, GameObject.Find("personaje").transform.position, transform.rotation) as GameObject;
+
+            rb = ballClone.GetComponent<Rigidbody>(); // Obtiene el RigidBody del prefab
+            rb.AddForce(throwSpeed / 100, ForceMode.Impulse); // Añade el impulso
         }
     }
 }
