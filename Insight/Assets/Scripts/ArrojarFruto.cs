@@ -13,7 +13,7 @@ public class ArrojarFruto : MonoBehaviour
 	public GameObject ballClone; // Para uno usar el prefab original
 	private Rigidbody rb; // Variable para usar el RigidBody
 	private int frutosDisponibles = 3; // Cantidad de frutos disponibles en el nivel
-	Camera camera;
+	new Camera camera;
 
 	public void SetLanzado(bool lanzado) // Constructor para acceder
 	{
@@ -40,7 +40,7 @@ public class ArrojarFruto : MonoBehaviour
             frutosDisponibles--; // Resta a la cantidad de frutos
          
             // Crea una instancia del prefab ball desde la posición del personaje y anade rotación
-            ballClone = Instantiate(ball, GameObject.Find("personaje").transform.position, transform.rotation) as GameObject;
+            ballClone = Instantiate(ball, GameObject.Find("personaje").transform.position, transform.rotation) as GameObject; 
 
             rb = ballClone.GetComponent<Rigidbody>(); // Obtiene el RigidBody del prefab
             rb.AddForce(throwSpeed/100, ForceMode.Impulse); // Añade el impulso
