@@ -12,14 +12,9 @@ public class TimerFruto : MonoBehaviour {
         {
             Destroy(other.gameObject,destroyTime); // Lo destruye en el tiempo establecido
 
-			Camera.main.GetComponent<ArrojarFruto>().SetLanzado(false); // En el getComponent hay que poner el script en uso
+            GameObject.Find("personaje").GetComponent<ArrojarFruto>().SetLanzado(false); // En el getComponent hay que poner el script en uso
             
-           /* // Con Camera.main accedo a la cámara principal
-            if (GameObject.Find("ball(Clon)")==null || GameObject.Find("ball(Clon)").Equals(null))  // ***** CORREGIR ***** La condición debería ser que si el objeto se ha destruido
-            {
-                
-            }
-			*/
+           
         }
     }
 
@@ -32,3 +27,10 @@ public class TimerFruto : MonoBehaviour {
 	void Update () {
 	}
 }
+
+/* // Con Camera.main accedo a la cámara principal
+            if (GameObject.Find("ball(Clon)")==null || GameObject.Find("ball(Clon)").Equals(null))  // ***** CORREGIR ***** La condición debería ser que si el objeto se ha destruido
+            {
+                
+            }
+			*/
